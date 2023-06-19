@@ -34,11 +34,6 @@ button {
 html {
   font-family: "Noto Sans JP", sans-serif;
   background-color: #eeeeee;
-  height: 300vh;
-}
-
-body {
-  margin: 0;
 }
 
 .login,

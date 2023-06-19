@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Dashboard from './Pages/Dashboard';
 import TodoPage from './Pages/TodoPage';
 import Sidebar from './Sidebar';
-import TodoList from "./TodoList/TodoList";
+import './Home.css';
 
 const Home = () => {
   return (
