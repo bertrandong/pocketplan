@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(254, 254, 254);
+    text-align: center;
+}
+
+.components {
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+footer {
+    font-size: smaller;
+}
