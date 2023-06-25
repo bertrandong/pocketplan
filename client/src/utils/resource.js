@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 
 export async function handleLogin(username, password, navigate) {
 	try {
-		const request = await fetch("http://localhost:3000/login", {
+		const request = await fetch("http://localhost:4000/login", {
 			method: "POST",
 			body: JSON.stringify({
 				username,
@@ -28,7 +28,7 @@ export async function handleLogin(username, password, navigate) {
 }
 export async function handleRegister(email, username, password, navigate) {
     try {
-        const request = await fetch("http://localhost:3000/register", {
+        const request = await fetch("http://localhost:4000/register", {
             method: "POST",
             body: JSON.stringify({
                 email,

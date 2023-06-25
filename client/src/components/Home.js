@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Dashboard from './Pages/Dashboard';
 import TodoPage from './Pages/TodoPage';
 import Sidebar from './Sidebar';
-import Calendar from './Pages/calendar/Calendar';
+import Calendar from './Pages/Newcal/Calendar';
 import Analytics from './Pages/Analytics';
 import About from './Pages/About';
 import './Home.css';
