@@ -1,11 +1,25 @@
+require("dotenv").config();
+
 const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
-const PORT = 3000;
+const PORT = 4000;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use("/api/calendar", require('./Routes/CalendarRoutes'));
+
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server listening on ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.log(error)
+    })
 
 //👇🏻 array representing the data
 const database = [];
@@ -93,6 +107,25 @@ app.post("/schedules/:username", (req, res) => {
 	return res.json({ error_message: "User doesn't exist" });
 });
 
-app.listen(PORT, () => {
-	console.log(`Server listening on ${PORT}`);
+const events = []
+
+app.post("/create-event", (req, res) => {
+    const { id, title, start, end, allDay } = req.body;
+    //👇🏻 checks if the user does not exist
+    let result = events.filter(
+        (e) => e.id === id
+    );
+    //👇🏻 creates the user's data structure on the server
+    if (result.length === 0) {
+        events.push({
+            id,
+            title,
+            start,
+            end,
+            allDay,
+        });
+        return res.json({ message: "Event created successfully!" });
+    }
+    //👇🏻 returns an error
+    return res.json({ error_message: "Event already exists!" });
 });
