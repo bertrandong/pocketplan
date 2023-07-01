@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/pocketplan/static/css/main.a7298c06.css",
+    "main.js": "/pocketplan/static/js/main.6411a3ed.js",
+    "static/js/787.e0a36f6d.chunk.js": "/pocketplan/static/js/787.e0a36f6d.chunk.js",
+    "static/media/appointment.gif": "/pocketplan/static/media/appointment.3cf0f336e86ad0087268.gif",
+    "static/media/list.gif": "/pocketplan/static/media/list.4f8751792e892b0de633.gif",
+    "index.html": "/pocketplan/index.html",
+    "main.a7298c06.css.map": "/pocketplan/static/css/main.a7298c06.css.map",
+    "main.6411a3ed.js.map": "/pocketplan/static/js/main.6411a3ed.js.map",
+    "787.e0a36f6d.chunk.js.map": "/pocketplan/static/js/787.e0a36f6d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a7298c06.css",
+    "static/js/main.6411a3ed.js"
+  ]
+}
