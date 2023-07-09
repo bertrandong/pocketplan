@@ -18,7 +18,11 @@ const Login = () => {
 
 	return (
 		<main className='login'>
+			<head>
+				<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet"></link>
+			</head>
 			<form className='login__form' onSubmit={handleSubmit}>
+				<h1 style={{'fontFamily': 'Bowlby One', 'fontSize': '6rem', 'color': 'rgb(227, 119, 4)', 'letterSpacing': '4px', 'padding-bottom': '2%'}}>PocketPlanner</h1>
 				<h2 className='login__title'>Log into your account</h2>
 				<label htmlFor='username'>Username</label>
 				<input
