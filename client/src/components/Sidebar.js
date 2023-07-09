@@ -8,11 +8,13 @@ import {
     FaShoppingBag,
     FaThList
 }from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
+import { ImExit } from 'react-icons/im'
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import "./Sidebar.css";
 
 
 const Sidebar = ({children}) => {
+    const navigate = useNavigate()
     const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
     const menuItem=[
@@ -40,8 +42,14 @@ const Sidebar = ({children}) => {
             path:"/about",
             name:"About",
             icon:<FaUserAlt/>
+        },
+        {
+            path:"/",
+            name:"Logout",
+            icon:<ImExit/>
         }
     ]
+
     return (
         <div className="sidebar-container">
            <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
@@ -55,7 +63,7 @@ const Sidebar = ({children}) => {
                    menuItem.map((item, index)=>(
                        <NavLink to={item.path} key={index} className="link" activeclassName="active">
                            <div className="icon">{item.icon}</div>
-                           <div style={{display: isOpen ? "block" : "none"}} className="iconlink_text">{item.name}</div>
+                           <div style={{display: isOpen ? "block" : "none", "padding-top": "2px"}} className="iconlink_text">{item.name}</div>
                        </NavLink>
                    ))
                }
