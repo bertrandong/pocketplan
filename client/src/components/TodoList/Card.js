@@ -3,6 +3,7 @@ import { icons } from 'react-icons';
 import EditTask from './modals/EditTask'
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import { AiOutlineEdit } from 'react-icons/ai';
+import moment from 'moment';
 
 const Card = ({taskObj, index, deleteTask, updateListArray}) => {
     const [modal, setModal] = useState(false);
@@ -48,8 +49,10 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
             <div class = "task-holder">
                 <span class = "card-header" style={{"background-color": colors[index%5].secondaryColor, "border-radius": "10px", "height": "fit-content"}}>{taskObj.Name}</span>
                 <p className = "mt-3">{taskObj.Description}</p>
+                
 
-                <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
+                <div style={{"display": "flex", "position": "absolute", "right" : "20px", "bottom" : "1px"}}>
+                    <p className = "mt-3" style={{'fontSize': '13px', 'margin-right': '45px'}}>Due: {moment(taskObj.Duedate).format('HH:mm, DD MMM, YYYY')}</p>
                     <AiOutlineEdit style={{"margin-right": "7px", "width": "15px", "height": "auto"}} onClick={() => setModal(true)} />
                     <BsFillTrash3Fill style={{"width": "15px", "height": "auto"}} onClick = {handleDelete} />
                 </div>

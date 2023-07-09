@@ -1,9 +1,12 @@
 import React, { useState , useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 
 const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
+    const [date, setDate] = useState('')
 
     const handleChange = (e) => {
         
@@ -21,6 +24,7 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
     useEffect(() => {
         setTaskName(taskObj.Name)
         setDescription(taskObj.Description)
+        setDate(moment(taskObj.Duedate).toDate())
     },[])
 
     const handleUpdate = (e) => {
@@ -28,6 +32,7 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
         let tempObj = {}
         tempObj['Name'] = taskName
         tempObj['Description'] = description
+        tempObj['Duedate'] = date
         updateTask(tempObj)
     }
 
@@ -43,6 +48,11 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
                     <div className = "form-group">
                         <label>Description</label>
                         <textarea rows = "5" className = "form-control" value = {description} onChange = {handleChange} name = "description"></textarea>
+                    </div>
+                    <div className = "form-group">
+                        <label>Due Date</label>
+                        <br></br>
+                        <DatePicker showTimeSelect selected={date} onChange={(date) => setDate(date)} />
                     </div>
                 
             </ModalBody>

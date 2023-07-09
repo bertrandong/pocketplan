@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 const CreateTaskPopup = ({modal, toggle, save}) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
+    const [date, setDate] = useState(new Date())
 
     const handleChange = (e) => {
         
@@ -23,6 +26,7 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
         let taskObj = {}
         taskObj["Name"] = taskName
         taskObj["Description"] = description
+        taskObj["Duedate"] = date
         save(taskObj)
 
     }
@@ -38,6 +42,11 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
                     <div className = "form-group">
                         <label>Description</label>
                         <textarea rows = "5" className = "form-control" value = {description} onChange = {handleChange} name = "description"></textarea>
+                    </div>
+                    <div className = "form-group">
+                        <label>Due Date</label>
+                        <br></br>
+                        <DatePicker showTimeSelect selected={date} onChange={(date) => setDate(date)} />
                     </div>
                 
             </ModalBody>
