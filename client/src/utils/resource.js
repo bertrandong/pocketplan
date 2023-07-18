@@ -21,8 +21,6 @@ export async function handleLogin(username, password, navigate) {
 			toast.success(data.message);
             console.log('Got the token: ', data.data)
             localStorage.setItem('token', data.data)
-			//localStorage.setItem("_id", data.data._id);
-			//localStorage.setItem("_myEmail", data.data._email);
 			navigate("/home");
 		}
 	} catch (err) {
@@ -56,26 +54,3 @@ export async function handleRegister(email, username, password, navigate) {
         toast.error("Account creation failed");
     }
 };
-
-/*export async function handleRegister(email, username, password, navigate) {
-
-        const request = await fetch("/api/register'", {
-            method: "POST",
-            body: JSON.stringify({
-                email,
-                username,
-                password,
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        const data = await request.json();
-        if (data.status === 'ok') {
-            window.prompt('Success')
-            navigate('/')
-        } else {
-            window.prompt(data.error)
-        }
-};*/
-

@@ -6,7 +6,7 @@ const router = express.Router()
 router.post('/createEvent', createEvent)
 
 //GET all events
-router.get('/', getEvents)
+router.post('/', getEvents)
 
 //GET an event
 router.get('/:id', getEvent)

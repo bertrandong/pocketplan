@@ -5,16 +5,17 @@ import {
     FaUserAlt,
     FaRegChartBar,
     FaCalendar,
-    FaShoppingBag,
     FaThList
-}from "react-icons/fa";
+} from "react-icons/fa";
 import { ImExit } from 'react-icons/im'
-import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import "./Sidebar.css";
 
+const handleLogout = () => {
+    localStorage.removeItem('token')
+}
 
 const Sidebar = ({children}) => {
-    const navigate = useNavigate()
     const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
     const menuItem=[
@@ -46,7 +47,8 @@ const Sidebar = ({children}) => {
         {
             path:"/",
             name:"Logout",
-            icon:<ImExit/>
+            icon:<ImExit/>,
+            onClick: {handleLogout}
         }
     ]
 

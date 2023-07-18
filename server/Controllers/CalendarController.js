@@ -1,12 +1,15 @@
 const { default: mongoose } = require("mongoose");
 const Event = require("../Models/Event");
+const jwt = require('jsonwebtoken')
 
 const createEvent = async (req, res) => {
 
-    const {_id, title, start, end, allDay} = req.body
+    const {_id, title, start, end, allDay, token} = req.body
 
-    try{
-        const event = await Event.create({_id, title, start, end, allDay})
+    try {
+        const user = jwt.verify(token, process.env.JWT_SECRET)
+        const user_id = user.id
+        const event = await Event.create({_id, title, start, end, allDay, user_id})
         res.status(200).json(event)
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -14,7 +17,10 @@ const createEvent = async (req, res) => {
 }
 
 const getEvents = async (req, res) => {
-    const events = await Event.find({})
+    const { token } = req.body
+    const user = jwt.verify(token, process.env.JWT_SECRET)
+    const user_id = user.id
+    const events = await Event.find({user_id: user_id})
 
     res.status(200).json(events)
 }

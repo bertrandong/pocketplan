@@ -146,7 +146,7 @@ handleEventRemove = (removeInfo) => {
       
       const handleEventAdd = async () => {
         //const eventState = calendarApi.getEventById(serial);
-        const eventState = {_id: serial, title: title, start: selectInfo.startStr, end: selectInfo.endStr, allDay: selectInfo.allDay}
+        const eventState = {_id: serial, title: title, start: selectInfo.startStr, end: selectInfo.endStr, allDay: selectInfo.allDay, token: localStorage.getItem('token')}
         const response = await fetch('/api/calendar/createEvent', {
           method: 'POST',
           body: JSON.stringify(eventState),

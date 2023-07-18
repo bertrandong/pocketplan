@@ -4,7 +4,6 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { v4 } from 'uuid';
-
 import axios from 'axios'
 
 
@@ -28,8 +27,9 @@ class cal extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/api/calendar')
-      .then(response => {
+    const token = localStorage.getItem('token')
+    axios.post('/api/calendar', { token: token })
+        .then(response => {
         console.log(response.data);
         let appointments = response.data;
         
@@ -80,7 +80,7 @@ class cal extends Component {
     const title = window.prompt("New Event name");
 
     if (title) {
-      const event = {_id: id, title: title, start: start, end: end}
+      const event = {_id: id, title: title, start: start, end: end, token: localStorage.getItem('token')}
 
       this.setState(prevState => ({
         cal_events: [...prevState.cal_events, event]
