@@ -3,7 +3,17 @@ const User = require("../Models/User");
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const JWT_SECRET = 'uisdf@()ndslnd9*&ndascpozpa'
+const getUser = async (req, res) => {
+    const { token } = req.body
+    
+    try {
+        const user = jwt.verify(token, process.env.JWT_SECRET)
+        const user_name = user.username
+        res.status(200).json(user_name)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
 
 const Login = async (req, res) => {
     const { username, password } = req.body;
@@ -17,7 +27,7 @@ const Login = async (req, res) => {
     if (await bcrypt.compare(password, user.password)) {
         //Username and password combination is successful
         
-        const token = jwt.sign({ id: user._id, username:user.username }, JWT_SECRET)
+        const token = jwt.sign({ id: user._id, username:user.username }, process.env.JWT_SECRET)
 
         return res.json({
             status: 'ok',
@@ -28,23 +38,6 @@ const Login = async (req, res) => {
 
     return res.json({ status: 'error', error_message: 'Invalid username' })
 
-    /*let result = database.filter(
-        (user) => user.username === username && user.password === password
-    );
-    //👇🏻 user doesn't exist
-    if (result.length !== 1) {
-        return res.json({
-            error_message: "Incorrect credentials",
-        });
-    }
-    //👇🏻 user exists
-    res.json({
-        message: "Login successfully",
-        data: {
-            _id: result[0].id,
-            _email: result[0].email,
-        },
-    });*/
 }
 
 const Register = async (req, res) => {
@@ -84,6 +77,7 @@ const Register = async (req, res) => {
 }
 
 module.exports = {
+    getUser,
     Login,
     Register
 }

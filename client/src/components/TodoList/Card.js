@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { icons } from 'react-icons';
 import EditTask from './modals/EditTask'
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import { AiOutlineEdit } from 'react-icons/ai';

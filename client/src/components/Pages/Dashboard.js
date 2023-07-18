@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import list from '../../images/list.gif';
 import appointment from '../../images/appointment.gif';
+import axios from 'axios';
+
 
 const Dashboard = () => {
+    const [username, setUsername] = useState('')
+    
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+    
+        axios.post('/user/getuser', { token: token })
+            .then(response => {
+            console.log(response.data);
+            setUsername(response.data)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    })
+
+    
+
     return (
         <div className='dashboard'>
+            <h1>Hello {username}!</h1>
             <h1 className='welcome'>Welcome to PocketPlanner!</h1>
             <p>PocketPlanner is a planner / scheduler application which is targeted at students to help managed their time more effectively.</p>
             <p>PocketPlanner consists of 2 main components:
