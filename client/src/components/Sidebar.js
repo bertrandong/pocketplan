@@ -13,6 +13,9 @@ import "./Sidebar.css";
 
 const handleLogout = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('tasks')
+    localStorage.removeItem('total')
+    localStorage.removeItem('start')
 }
 
 const Sidebar = ({children}) => {
@@ -43,12 +46,6 @@ const Sidebar = ({children}) => {
             path:"/about",
             name:"About",
             icon:<FaUserAlt/>
-        },
-        {
-            path:"/",
-            name:"Logout",
-            icon:<ImExit/>,
-            onClick: {handleLogout}
         }
     ]
 
@@ -69,6 +66,10 @@ const Sidebar = ({children}) => {
                        </NavLink>
                    ))
                }
+                <NavLink onClick={handleLogout} to='/' className="link" activeclassName="active">
+                    <div className="icon"><ImExit/></div>
+                    <div style={{display: isOpen ? "block" : "none", "padding-top": "2px"}} className="iconlink_text">Logout</div>
+                </NavLink>
            </div>
            <main>{children}</main>
         </div>

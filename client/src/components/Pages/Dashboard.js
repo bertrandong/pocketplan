@@ -25,7 +25,7 @@ const Dashboard = () => {
 
     return (
         <div className='dashboard'>
-            <h1>Hello {username}!</h1>
+            <h1 style={{'padding-top':'1%'}}>Hello {username}!</h1>
             <h1 className='welcome'>Welcome to PocketPlanner!</h1>
             <p>PocketPlanner is a planner / scheduler application which is targeted at students to help managed their time more effectively.</p>
             <p>PocketPlanner consists of 2 main components:
