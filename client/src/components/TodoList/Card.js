@@ -51,7 +51,7 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
                 
 
                 <div style={{"display": "flex", "position": "absolute", "right" : "20px", "bottom" : "1px"}}>
-                    <p className = "mt-3" style={{'fontSize': '13px', 'margin-right': '45px'}}>Due: {moment(taskObj.Duedate).format('HH:mm, DD MMM, YYYY')}</p>
+                    <p className = "mt-3" style={{'fontSize': '13px', 'margin-right': '52px'}}>Due: {moment(taskObj.Duedate).format('HH:mm, DD MMM, YYYY')}</p>
                     <AiOutlineEdit style={{"margin-right": "7px", "width": "15px", "height": "auto"}} onClick={() => setModal(true)} />
                     <BsFillTrash3Fill style={{"width": "15px", "height": "auto"}} onClick = {handleDelete} />
                 </div>

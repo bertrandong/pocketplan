@@ -1,0 +1,14 @@
+.odd_container {
+    padding: 1%;
+    width: 100%;
+}
+
+.even_container {
+    padding: 1%;
+    background-color: rgb(234, 249, 255);
+    width: 100%;
+}
+
+.h4title {
+    font-weight: 700;
+}

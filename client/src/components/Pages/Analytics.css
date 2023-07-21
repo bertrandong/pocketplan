@@ -1,0 +1,44 @@
+.enterinputsbtn {
+    transition-duration: 0.4s;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    margin-left: 46%;
+}
+
+.enterinputsbtn:hover {
+    background-color: #2d9131;
+    color: white;
+    border-radius: 5px;
+}
+
+.modalsave {
+    background-color: rgb(47, 136, 209);
+}
+
+.modalsave:hover {
+    background-color: rgb(27, 91, 144);
+}
+
+.main_container {
+    display: flex;
+    row-gap: 5%;
+    column-gap: 5%;
+    flex-wrap: wrap;
+}
+
+.infobox {
+    margin-top: 2%;
+    background-color: rgb(221, 232, 248);
+    border-radius: 10%;
+    font-size: larger;
+    width: 30%;
+    height: 300px;
+    text-align: center;
+    padding: 125px 0
+}
+
+.specialp {
+    font-family: Lilita One;
+    font-size: larger;
+}

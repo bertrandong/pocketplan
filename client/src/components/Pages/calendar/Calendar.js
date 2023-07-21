@@ -53,7 +53,8 @@ class cal extends Component {
     //const DnDCalendar = withDragAndDrop(Calendar)
 
     return (
-      <div className="Container">
+      <div className="Container" style={{'padding': '1%'}}>
+        <h1>Calendar</h1>
         <div style={{ height: 700 }}>
           <Calendar 
             selectable

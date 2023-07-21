@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CreateTask from './modals/CreateTask'
 import Card from './Card';
-
 import './TodoList.css';
 
 const TodoList = () => {
@@ -51,7 +50,7 @@ const TodoList = () => {
         <>
             <div className = "title_container">
                 <h3>Todo List</h3>
-                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Create Task</button>
+                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)}>Create Task</button>
             </div>
             <div className = "task-container">
             {taskList && taskList.map((obj , index) => <Card taskObj = {obj} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}
