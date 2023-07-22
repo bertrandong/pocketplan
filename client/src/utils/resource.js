@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 
 export async function handleLogin(username, password, navigate) {
 	try {
-		const request = await fetch("https://pocketplanner-api.vercel.app/user/login", {
+		const request = await fetch("https://pocketplanner-api.onrender.com/user/login", {
             mode: 'cors',
 			method: "POST",
 			body: JSON.stringify({
@@ -31,7 +31,7 @@ export async function handleLogin(username, password, navigate) {
 }
 export async function handleRegister(email, username, password, navigate) {
     try {
-        const request = await fetch("https://pocketplanner-api.vercel.app/user/register", {
+        const request = await fetch("https://pocketplanner-api.onrender.com/user/register", {
             mode: 'cors',
             method: "POST",
             body: JSON.stringify({
