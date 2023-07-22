@@ -15,7 +15,7 @@ const App = () => {
 			<Routes>
 				<Route exact path='/pocketplan' element={<Login />} />
 				<Route path='/register' element={<Signup />} />
-          		<Route path='/home' element={<Home />} />
+          		<Route path='/*' element={<Home />} />
 			</Routes>
 			<ToastContainer />
 		</div>
