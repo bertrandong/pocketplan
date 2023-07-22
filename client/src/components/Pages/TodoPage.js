@@ -1,6 +1,5 @@
 import React from "react";
 import TodoList from "../TodoList/TodoList";
-import Sidebar from "../Sidebar";
 
 function TodoPage() {
     return (
