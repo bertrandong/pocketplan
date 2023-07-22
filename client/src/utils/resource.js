@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 export async function handleLogin(username, password, navigate) {
 	try {
 		const request = await fetch("https://pocketplanner-api.onrender.com/user/login", {
-            mode: 'cors',
+            mode: 'no-cors',
 			method: "POST",
 			body: JSON.stringify({
 				username,
@@ -32,7 +32,7 @@ export async function handleLogin(username, password, navigate) {
 export async function handleRegister(email, username, password, navigate) {
     try {
         const request = await fetch("https://pocketplanner-api.onrender.com/user/register", {
-            mode: 'cors',
+            mode: 'no-cors',
             method: "POST",
             body: JSON.stringify({
                 email,

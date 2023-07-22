@@ -88,7 +88,7 @@ class cal extends Component {
       }))
   
       const response = await fetch('https://pocketplanner-api.onrender.com/api/calendar/createEvent', {
-        mode: 'cors',
+        mode: 'no-cors',
         method: 'POST',
         body: JSON.stringify(event),
         headers: {
@@ -111,7 +111,7 @@ class cal extends Component {
       })
 
       const response = await fetch('https://pocketplanner-api.onrender.com/api/calendar/' + id, {
-        mode: 'cors',
+        mode: 'no-cors',
         method: 'DELETE'
       })
       const json = await response.json();
