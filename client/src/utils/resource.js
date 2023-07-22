@@ -47,7 +47,7 @@ export async function handleRegister(email, username, password, navigate) {
             toast.error(data.error_message);
         } else {
             toast.success(data.message);
-            navigate("/pocketplan");
+            navigate("/");
         }
     } catch (err) {
         console.error(err);

@@ -66,7 +66,7 @@ const Sidebar = ({children}) => {
                        </NavLink>
                    ))
                }
-                <NavLink onClick={handleLogout} to='/pocketplan' className="link" activeclassName="active">
+                <NavLink onClick={handleLogout} to='/' className="link" activeclassName="active">
                     <div className="icon"><ImExit/></div>
                     <div style={{display: isOpen ? "block" : "none", "padding-top": "2px"}} className="iconlink_text">Logout</div>
                 </NavLink>
