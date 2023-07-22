@@ -34,24 +34,24 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
         setModal(!modal);
     }
 
-    const updateTask = (obj) => {
-        updateListArray(obj, index)
+    const updateTask = (taskArr) => {
+        updateListArray(taskArr, taskObj)
+        setModal(!modal)
     }
 
     const handleDelete = () => {
-        deleteTask(index)
+        deleteTask(taskObj)
     }
 
     return (
         <div class = "card-wrapper mr-5">
             <div class = "card-top" style={{"background-color": colors[index%5].primaryColor}}></div>
             <div class = "task-holder">
-                <span class = "card-header" style={{"background-color": colors[index%5].secondaryColor, "border-radius": "10px", "height": "fit-content"}}>{taskObj.Name}</span>
-                <p className = "mt-3">{taskObj.Description}</p>
-                
+                <span class = "card-header" style={{"background-color": colors[index%5].secondaryColor, "border-radius": "10px", "height": "fit-content"}}>{taskObj.taskName}</span>
+                <p className = "mt-3">{taskObj.description}</p>
 
                 <div style={{"display": "flex", "position": "absolute", "right" : "20px", "bottom" : "1px"}}>
-                    <p className = "mt-3" style={{'fontSize': '13px', 'margin-right': '52px'}}>Due: {moment(taskObj.Duedate).format('HH:mm, DD MMM, YYYY')}</p>
+                    <p className = "mt-3" style={{'fontSize': '13px', 'margin-right': '52px'}}>Due: {moment(taskObj.date).format('HH:mm, DD MMM, YYYY')}</p>
                     <AiOutlineEdit style={{"margin-right": "7px", "width": "15px", "height": "auto"}} onClick={() => setModal(true)} />
                     <BsFillTrash3Fill style={{"width": "15px", "height": "auto"}} onClick = {handleDelete} />
                 </div>

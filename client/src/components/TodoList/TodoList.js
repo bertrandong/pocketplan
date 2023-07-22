@@ -2,47 +2,100 @@ import React, {useEffect, useState} from 'react';
 import CreateTask from './modals/CreateTask'
 import Card from './Card';
 import './TodoList.css';
+import { v4 } from 'uuid';
 
 const TodoList = () => {
     const [modal, setModal] = useState(false);
     const [taskList, setTaskList] = useState([])
 
-    useEffect(() => {
+    /*useEffect(() => {
         let arr = localStorage.getItem("taskList")
 
         if(arr){
             let obj = JSON.parse(arr)
             setTaskList(obj)
         }
-    }, [])
+    }, [])*/
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const token = localStorage.getItem('token')
+            const response = await fetch('api/todolist/getTasks', {
+                method: 'POST',
+                body: JSON.stringify({token: token}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const json = await response.json()
+
+            //let obj = JSON.parse(json)
+            setTaskList(json)
+        }
+
+        fetchData()
+    })
 
 
-    const deleteTask = (index) => {
-        let tempList = taskList
+    const deleteTask = async (taskObj) => {
+        const id = taskObj._id
+        const response = await fetch('api/todolist/' + id, {
+            method: 'DELETE'
+        })
+        const json = await response.json();
+
+        /*let tempList = taskList
         tempList.splice(index, 1)
         localStorage.setItem("taskList", JSON.stringify(tempList))
         setTaskList(tempList)
-        window.location.reload()
+        window.location.reload()*/
     }
 
-    const updateListArray = (obj, index) => {
-        let tempList = taskList
+    const updateListArray = async (taskArr, taskObj) => {
+        const id = taskObj._id
+        const response = await fetch('api/todolist/' + id, {
+            method: 'PATCH',
+            body: JSON.stringify({taskName: taskArr['Name'], description: taskArr['Description'], date: taskArr['Duedate']}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const json = await response.json()
+
+
+        /*let tempList = taskList
         tempList[index] = obj
         localStorage.setItem("taskList", JSON.stringify(tempList))
         setTaskList(tempList)
-        window.location.reload()
+        window.location.reload()*/
     }
 
     const toggle = () => {
         setModal(!modal);
     }
 
-    const saveTask = (taskObj) => {
-        let tempList = taskList
+    const saveTask = async (taskObj) => {
+        try {
+            const id = v4()
+            const token = localStorage.getItem('token')
+            const response = await fetch('api/todolist/createTask', {
+                method: 'POST',
+                body: JSON.stringify({taskName: taskObj['Name'], description: taskObj['Description'], date: taskObj['Duedate'], token: token}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const json = await response.json()
+
+        /*let tempList = taskList
         tempList.push(taskObj)
         localStorage.setItem("taskList", JSON.stringify(tempList))
-        setTaskList(taskList)
+        setTaskList(taskList)*/
+        
         setModal(false)
+    } catch (error) {
+        throw error
+    }
     }
 
 

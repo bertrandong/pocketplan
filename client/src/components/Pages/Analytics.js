@@ -93,7 +93,7 @@ const Analytics = () => {
     return (
         <main style={{'padding': '1%'}}>
             <head>
-                <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet" />
             </head>
             <h1>Track today's progress:</h1>
             <p className='specialp' style={{'textAlign': 'center', 'padding-top':'1%'}}>{intro}</p>
