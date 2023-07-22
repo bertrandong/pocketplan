@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/calendar", require('./Routes/CalendarRoutes'));
 app.use("/user", require('./Routes/UserRoutes'));
+app.use("/api/todolist", require('./Routes/TodolistRoutes'))
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
