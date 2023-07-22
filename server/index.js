@@ -3,11 +3,11 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const cors = require("cors");
+
 const bodyParser = require('body-parser')
 const PORT = 4000;
 
-app.use(cors());
+
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
