@@ -28,7 +28,7 @@ class cal extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem('token')
-    axios.post('https://pocketplanner-dz6nh1xbq-bertrandong.vercel.app/api/calendar', { token: token })
+    axios.post('https://pocketplanner-api.onrender.com/api/calendar', { token: token })
         .then(response => {
         console.log(response.data);
         let appointments = response.data;
@@ -87,7 +87,7 @@ class cal extends Component {
         cal_events: [...prevState.cal_events, event]
       }))
   
-      const response = await fetch('https://pocketplanner-dz6nh1xbq-bertrandong.vercel.app/api/calendar/createEvent', {
+      const response = await fetch('https://pocketplanner-api.onrender.com/api/calendar/createEvent', {
         method: 'POST',
         body: JSON.stringify(event),
         headers: {
@@ -109,7 +109,7 @@ class cal extends Component {
         return {cal_events: arr.filter(event => event._id !== id)}
       })
 
-      const response = await fetch('https://pocketplanner-dz6nh1xbq-bertrandong.vercel.app/api/calendar/' + id, {
+      const response = await fetch('https://pocketplanner-api.onrender.com/api/calendar/' + id, {
         method: 'DELETE'
       })
       const json = await response.json();
