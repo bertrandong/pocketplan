@@ -88,6 +88,7 @@ class cal extends Component {
       }))
   
       const response = await fetch('https://pocketplanner-api.vercel.app/api/calendar/createEvent', {
+        mode: 'cors',
         method: 'POST',
         body: JSON.stringify(event),
         headers: {
@@ -110,6 +111,7 @@ class cal extends Component {
       })
 
       const response = await fetch('https://pocketplanner-api.vercel.app/api/calendar/' + id, {
+        mode: 'cors',
         method: 'DELETE'
       })
       const json = await response.json();

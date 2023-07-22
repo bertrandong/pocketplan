@@ -21,6 +21,7 @@ const TodoList = () => {
         const fetchData = async () => {
             const token = localStorage.getItem('token')
             const response = await fetch('https://pocketplanner-api.vercel.app/api/todolist/getTasks', {
+                mode: 'cors',
                 method: 'POST',
                 body: JSON.stringify({token: token}),
                 headers: {
@@ -40,6 +41,7 @@ const TodoList = () => {
     const deleteTask = async (taskObj) => {
         const id = taskObj._id
         const response = await fetch('https://pocketplanner-api.vercel.app/api/todolist/' + id, {
+            mode: 'cors',
             method: 'DELETE'
         })
         const json = await response.json();
@@ -54,6 +56,7 @@ const TodoList = () => {
     const updateListArray = async (taskArr, taskObj) => {
         const id = taskObj._id
         const response = await fetch('api/todolist/' + id, {
+            mode: 'cors',
             method: 'PATCH',
             body: JSON.stringify({taskName: taskArr['Name'], description: taskArr['Description'], date: taskArr['Duedate']}),
             headers: {
@@ -79,6 +82,7 @@ const TodoList = () => {
             const id = v4()
             const token = localStorage.getItem('token')
             const response = await fetch('https://pocketplanner-api.vercel.app/api/todolist/createTask', {
+                mode: 'cors',
                 method: 'POST',
                 body: JSON.stringify({taskName: taskObj['Name'], description: taskObj['Description'], date: taskObj['Duedate'], token: token}),
                 headers: {
