@@ -12,11 +12,11 @@ import { useState } from "react";
 const App = () => {
 	return (
 		<div>
-				<Routes>
-					<Route path='/' element={<Login />} />
-					<Route path='/register' element={<Signup />} />
-          <Route path='/*' element={<Home />} />
-				</Routes>
+			<Routes>
+				<Route exact path='/pocketplan' element={<Login />} />
+				<Route path='/register' element={<Signup />} />
+          		<Route path='/home' element={<Home />} />
+			</Routes>
 			<ToastContainer />
 		</div>
 	);

@@ -52,7 +52,7 @@ const Signup = () => {
 				<button className='signupButton'>REGISTER</button>
 				<p style={{ textAlign: "center", marginTop: "30px" }}>
 					Already have an account?{" "}
-					<Link className='signuplink' to='/'>
+					<Link className='signuplink' to='/pocketplan'>
 						Sign in
 					</Link>
 				</p>
