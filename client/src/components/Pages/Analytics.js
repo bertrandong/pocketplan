@@ -96,7 +96,7 @@ const Analytics = () => {
                 <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet" />
             </head>
             <h1>Track today's progress:</h1>
-            <p className='specialp' style={{'textAlign': 'center', 'padding-top':'1%'}}>{intro}</p>
+            <p className='specialp' style={{'textAlign': 'center', 'padding-top':'1%', 'fontWeight': '800'}}>{intro}</p>
             <button className='enterinputsbtn' onClick={() => setModal(true)}>Enter inputs</button>
 
             <Modal isOpen={modal} onRequestClose={() => setModal(false)}>

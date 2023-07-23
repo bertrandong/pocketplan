@@ -9,6 +9,7 @@ import axios from 'axios'
 
 
 const localizer = momentLocalizer(moment);
+const DnDCalendar = withDragAndDrop(Calendar)
 
 class cal extends Component {
 
@@ -51,20 +52,21 @@ class cal extends Component {
 
   render() {
     const { cal_events } = this.state
-    const DnDCalendar = withDragAndDrop(Calendar)
+    
 
     return (
       <div className="Container" style={{'padding': '1%'}}>
         <h1>Calendar</h1>
         <div style={{ height: 700 }}>
-          <DnDCalendar 
+          <DnDCalendar
+            draggableAccessor={(event) => true}
             selectable
             popup={true}
             localizer={localizer}
             events={cal_events}
             step={30}
             style={{ height: "100vh" }}
-            defaultView='week'
+            defaultView='month'
             views={['month','week','day','agenda']}
             defaultDate={new Date()}
             onSelectSlot={this.handleSelect}
@@ -143,7 +145,5 @@ class cal extends Component {
   }
 
 }
-
-  
 
 export default cal;

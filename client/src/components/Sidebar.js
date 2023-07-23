@@ -12,10 +12,21 @@ import { NavLink } from 'react-router-dom';
 import "./Sidebar.css";
 
 const handleLogout = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('tasks')
-    localStorage.removeItem('total')
-    localStorage.removeItem('start')
+    if (localStorage.getItem('token') !== null) {
+        localStorage.removeItem('token')
+    }
+
+    if (localStorage.getItem('tasks') !== null) {
+        localStorage.removeItem('tasks')
+    }
+
+    if (localStorage.getItem('total') !== null) {
+        localStorage.removeItem('total')
+    }
+
+    if (localStorage.getItem('start') !== null) {
+        localStorage.removeItem('start')
+    }
 }
 
 const Sidebar = ({children}) => {
