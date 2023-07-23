@@ -20,7 +20,7 @@ const TodoList = () => {
     useEffect(() => {
         const fetchData = async () => {
             const token = localStorage.getItem('token')
-            const response = await fetch('https://pocketplanner-api.onrender.com/api/todolist/getTasks', {
+            const response = await fetch('https://pocketplanner-api.railway.internal/api/todolist/getTasks', {
                 method: 'POST',
                 body: JSON.stringify({token: token}),
                 headers: {
@@ -39,7 +39,7 @@ const TodoList = () => {
 
     const deleteTask = async (taskObj) => {
         const id = taskObj._id
-        const response = await fetch('https://pocketplanner-api.onrender.com/api/todolist/' + id, {
+        const response = await fetch('https://pocketplanner-api.railway.internal/api/todolist/' + id, {
             method: 'DELETE'
         })
         const json = await response.json();
@@ -53,7 +53,7 @@ const TodoList = () => {
 
     const updateListArray = async (taskArr, taskObj) => {
         const id = taskObj._id
-        const response = await fetch('https://pocketplanner-api.onrender.com/api/todolist/' + id, {
+        const response = await fetch('https://pocketplanner-api.railway.internal/api/todolist/' + id, {
             method: 'PATCH',
             body: JSON.stringify({taskName: taskArr['Name'], description: taskArr['Description'], date: taskArr['Duedate']}),
             headers: {
@@ -78,7 +78,7 @@ const TodoList = () => {
         try {
             const id = v4()
             const token = localStorage.getItem('token')
-            const response = await fetch('https://pocketplanner-api.onrender.com/api/todolist/createTask', {
+            const response = await fetch('https://pocketplanner-api.railway.internal/api/todolist/createTask', {
                 method: 'POST',
                 body: JSON.stringify({taskName: taskObj['Name'], description: taskObj['Description'], date: taskObj['Duedate'], token: token}),
                 headers: {
