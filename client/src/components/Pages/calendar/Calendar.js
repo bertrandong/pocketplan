@@ -3,6 +3,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import { v4 } from 'uuid';
 import axios from 'axios'
 
@@ -63,12 +64,14 @@ class cal extends Component {
             events={cal_events}
             step={30}
             style={{ height: "100vh" }}
-            defaultView='month'
+            defaultView='week'
             views={['month','week','day','agenda']}
             defaultDate={new Date()}
             onSelectSlot={this.handleSelect}
             onSelectEvent={this.handleSelectEvent}
             onEventDrop={this.handleEventDrop}
+            onEventResize={this.handleEventDrop}
+            resizable
           />
         </div>
       </div>
@@ -138,6 +141,7 @@ class cal extends Component {
     })
     const json = await response.json()
   }
+
 }
 
   
