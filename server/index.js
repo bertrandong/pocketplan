@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 const bodyParser = require('body-parser')
-const PORT = 4000;
+//const PORT = 4000;
 
 app.use(cors());
 app.use(bodyParser.json())
@@ -17,7 +17,7 @@ app.use("/api/todolist", require('./Routes/TodolistRoutes'))
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
-        app.listen(PORT, () => {
+        app.listen(process.env.PORT, () => {
             console.log(`Server listening on ${PORT}`);
         });
     })
