@@ -50,13 +50,13 @@ class cal extends Component {
 
   render() {
     const { cal_events } = this.state
-    //const DnDCalendar = withDragAndDrop(Calendar)
+    const DnDCalendar = withDragAndDrop(Calendar)
 
     return (
       <div className="Container" style={{'padding': '1%'}}>
         <h1>Calendar</h1>
         <div style={{ height: 700 }}>
-          <Calendar 
+          <DnDCalendar 
             selectable
             popup={true}
             localizer={localizer}
@@ -68,6 +68,7 @@ class cal extends Component {
             defaultDate={new Date()}
             onSelectSlot={this.handleSelect}
             onSelectEvent={this.handleSelectEvent}
+            onEventDrop={this.handleEventDrop}
           />
         </div>
       </div>
@@ -102,7 +103,6 @@ class cal extends Component {
   handleSelectEvent = async (eventInfo) => {
     if(window.confirm(`Are you sure you want to delete the event '${eventInfo.title}'`)) {
       const id = eventInfo._id
-  
       
       this.setState(prevState => {
         let arr = [...prevState.cal_events]
@@ -115,6 +115,31 @@ class cal extends Component {
       const json = await response.json();
     }
   }
+
+  handleEventDrop = async ({ event, start, end, allDay }) => {
+    const id = event._id
+    const title = event.title
+
+    const newEvent = {_id: id, title: title, start: start, end: end, token: localStorage.getItem('token')}
+
+    this.setState(prevState => {
+      //const existing = prevState.find(event => event._id === id)
+      let arr = [...prevState.cal_events]
+      const filtered = arr.filter(event => event._id !== id)
+      return {cal_events: [...filtered, newEvent]}
+    })
+
+    const response = await fetch('https://pocketplanner-api.up.railway.app/api/calendar/' + id, {
+      method: 'PATCH',
+      body: JSON.stringify(event),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const json = await response.json()
+  }
 }
+
+  
 
 export default cal;
