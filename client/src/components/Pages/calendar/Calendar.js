@@ -131,7 +131,7 @@ class cal extends Component {
 
     const response = await fetch('https://pocketplanner-api.up.railway.app/api/calendar/' + id, {
       method: 'PATCH',
-      body: JSON.stringify(event),
+      body: JSON.stringify(newEvent),
       headers: {
         'Content-Type': 'application/json'
       }
