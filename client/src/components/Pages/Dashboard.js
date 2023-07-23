@@ -11,7 +11,7 @@ const Dashboard = () => {
     useEffect(() => {
         const token = localStorage.getItem('token')
     
-        axios.post('https://pocketplanner-api.vercel.app/user/getuser', { token: token })
+        axios.post('https://pocketplanner-api.up.railway.app/user/getuser', { token: token })
             .then(response => {
             console.log(response.data);
             setUsername(response.data)
