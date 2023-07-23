@@ -18,7 +18,7 @@ app.use("/api/todolist", require('./Routes/TodolistRoutes'))
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         app.listen(process.env.PORT, () => {
-            console.log(`Server listening on ${PORT}`);
+            console.log(`Server listening on ${process.env.PORT}`);
         });
     })
     .catch((error) => {
