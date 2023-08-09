@@ -22,7 +22,7 @@ export async function handleLogin(username, password, navigate) {
             localStorage.setItem('token', data.data)
 			navigate("/home");
             window.location.reload()
-            if(window.location.hash == "#reload") {
+            window.onload = function () {
                 toast.success(data.message);
             }
 		}
