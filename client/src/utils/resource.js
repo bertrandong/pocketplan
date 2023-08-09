@@ -22,7 +22,6 @@ export async function handleLogin(username, password, navigate) {
             console.log('Got the token: ', data.data)
             localStorage.setItem('token', data.data)
 			navigate("/home");
-            location.reload()
 		}
 	} catch (err) {
 		console.error(err);
