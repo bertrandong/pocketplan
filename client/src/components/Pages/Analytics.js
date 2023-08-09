@@ -101,11 +101,11 @@ const Analytics = () => {
                 <ModalBody>
                     <div>
                         <label>Tasks accomplished</label>
-                        <input onChange={handleChange} name='tasks' value={tasks} type='number'></input>
+                        <input onChange={handleChange} name='tasks' value={tasks} type='number' min='0'></input>
                     </div>
                     <div>
                         <label>Total number of tasks for today</label>
-                        <input onChange={handleChange} name='total' value={total} type='number'></input>
+                        <input onChange={handleChange} name='total' value={total} type='number' min='0'></input>
                     </div>
                     <div>
                         <label>Start time</label>
