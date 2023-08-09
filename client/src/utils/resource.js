@@ -18,11 +18,11 @@ export async function handleLogin(username, password, navigate) {
 		if (data.error_message) {
 			toast.error(data.error_message);
 		} else {
-			toast.success(data.message);
             console.log('Got the token: ', data.data)
             localStorage.setItem('token', data.data)
 			navigate("/home");
             window.location.reload()
+            toast.success(data.message);
 		}
 	} catch (err) {
 		console.error(err);
