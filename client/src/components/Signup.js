@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { handleRegister } from "../utils/resource";
 
-const Signup = () => {
+const Signup = ({ onRegister }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [email, setEmail] = useState("");
@@ -15,6 +15,7 @@ const Signup = () => {
 			setPassword("");
 			setUsername("");
 			setEmail("");
+			onRegister({ email, username, password });
 		}
 	};
 
@@ -30,6 +31,7 @@ const Signup = () => {
 					required
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
+					placeholder='Email'
 				/>
 				<label htmlFor='username'>Username</label>
 				<input
@@ -39,6 +41,7 @@ const Signup = () => {
 					type='text'
 					value={username}
 					onChange={(e) => setUsername(e.target.value)}
+					placeholder='Username'
 				/>
 				<label htmlFor='password'>Password</label>
 				<input
@@ -48,6 +51,7 @@ const Signup = () => {
 					required
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
+					placeholder='Password'
 				/>
 				<button className='signupButton'>REGISTER</button>
 				<p style={{ textAlign: "center", marginTop: "30px" }}>

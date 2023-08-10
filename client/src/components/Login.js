@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { handleLogin } from "../utils/resource";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
@@ -13,6 +13,7 @@ const Login = () => {
 			handleLogin(username, password, navigate);
 			setPassword("");
 			setUsername("");
+			onLogin();
 		}
 	};
 
@@ -32,6 +33,7 @@ const Login = () => {
 					value={username}
 					onChange={(e) => setUsername(e.target.value)}
 					className='username'
+					placeholder="Username"
 				/>
 				<label htmlFor='password'>Password</label>
 				<input
@@ -41,6 +43,7 @@ const Login = () => {
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 					className='password'
+					placeholder="Password"
 				/>
 				<button className='loginButton'>LOG IN</button>
 				<p style={{ textAlign: "center", marginTop: "30px" }}>
